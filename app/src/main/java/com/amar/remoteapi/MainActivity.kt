@@ -19,6 +19,8 @@ import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.client.request.url
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 
 class MainActivity : ComponentActivity() {
       override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +41,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+      val testObject = Data(33, "Amar")
+      val jsonString = Json.encodeToString(testObject)
+      Log.d("check...123", "Greeting: $jsonString")
+      val jsonString1 = "{\"a\": 24, \"b\": \"Akshaya\"}"
+      val obj = Json.decodeFromString<Data>(jsonString)
+      Log.d("check...123", "Greeting: $obj")
+
       LaunchedEffect(Unit) {
-            val client = HttpClient(CIO)
+            val client = HttpClient(CIO) {
+            }
             try {
                   val response = client.get {
                         url("https://jsonplaceholder.typicode.com/posts")
@@ -64,3 +74,6 @@ fun GreetingPreview() {
             Greeting("Android")
       }
 }
+
+@Serializable
+data class Data(val a: Int, val b: String)
