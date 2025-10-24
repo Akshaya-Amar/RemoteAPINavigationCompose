@@ -24,8 +24,9 @@ class PostViewModel @Inject constructor(
             getPosts()
       }
 
-      private fun getPosts() {
+      fun getPosts() {
             viewModelScope.launch {
+                  _posts.value = ApiResult.Loading
                   repository.getPosts().collectLatest {
                         Log.d("check12...", "getPosts: ")
                         _posts.value = it

@@ -8,8 +8,8 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.amar.remoteapi.common.ApiResult
 import com.amar.remoteapi.data.model.Post
-import com.amar.remoteapi.ui.component.ErrorState
-import com.amar.remoteapi.ui.component.LoadingState
+import com.amar.remoteapi.ui.component.ErrorView
+import com.amar.remoteapi.ui.component.LoadingView
 import com.amar.remoteapi.ui.component.PostList
 import com.amar.remoteapi.ui.viewmodel.PostViewModel
 
@@ -22,12 +22,15 @@ fun PostScreen(
       when (postResult) {
             is ApiResult.Loading -> {
                   Log.d("check...", "PostScreen: Loading")
-                  LoadingState()
+                  LoadingView()
             }
 
             is ApiResult.Failure -> {
-                  Log.d("check...", "PostScreen: ${(postResult as ApiResult.Failure).message}")
-                  ErrorState()
+                  val message = (postResult as ApiResult.Failure).message
+                  Log.d("check...", "PostScreen: $message")
+                  ErrorView(message) {
+                        viewModel.getPosts()
+                  }
             }
 
             is ApiResult.Success -> {
