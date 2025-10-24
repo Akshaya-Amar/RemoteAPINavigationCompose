@@ -1,4 +1,4 @@
-package com.amar.remoteapi
+package com.amar.remoteapi.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

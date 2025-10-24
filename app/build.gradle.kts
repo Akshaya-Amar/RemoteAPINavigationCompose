@@ -3,6 +3,8 @@ plugins {
       alias(libs.plugins.kotlin.android)
       alias(libs.plugins.kotlin.compose)
       alias(libs.plugins.kotlin.serialization)
+      alias(libs.plugins.ksp)
+      alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -55,6 +57,9 @@ dependencies {
       implementation(libs.ktor.client.cio)
       implementation(libs.ktor.client.content.negotiation)
       implementation(libs.ktor.serialization.kotlinx.json)
+      implementation(libs.hilt.android)
+      implementation(libs.androidx.hilt.navigation.compose)
+      ksp(libs.hilt.android.compiler)
       implementation(libs.kotlinx.serialization.json)
       testImplementation(libs.junit)
       androidTestImplementation(libs.androidx.junit)
