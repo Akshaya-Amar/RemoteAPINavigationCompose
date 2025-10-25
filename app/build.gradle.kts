@@ -40,6 +40,7 @@ android {
             jvmTarget = "11"
       }
       buildFeatures {
+            buildConfig = true
             compose = true
       }
 }
@@ -57,10 +58,11 @@ dependencies {
       implementation(libs.ktor.client.cio)
       implementation(libs.ktor.client.content.negotiation)
       implementation(libs.ktor.serialization.kotlinx.json)
+      implementation(libs.kotlinx.serialization.json)
       implementation(libs.hilt.android)
       implementation(libs.androidx.hilt.navigation.compose)
+      implementation(libs.ktor.client.logging)
       ksp(libs.hilt.android.compiler)
-      implementation(libs.kotlinx.serialization.json)
       testImplementation(libs.junit)
       androidTestImplementation(libs.androidx.junit)
       androidTestImplementation(libs.androidx.espresso.core)

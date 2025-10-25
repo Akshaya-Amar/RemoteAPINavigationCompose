@@ -6,7 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.amar.remoteapi.common.ApiResult
+import com.amar.remoteapi.common.network.ApiResult
 import com.amar.remoteapi.data.model.Post
 import com.amar.remoteapi.ui.component.ErrorView
 import com.amar.remoteapi.ui.component.LoadingView

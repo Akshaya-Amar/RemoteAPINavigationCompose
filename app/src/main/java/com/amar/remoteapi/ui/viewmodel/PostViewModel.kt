@@ -3,7 +3,7 @@ package com.amar.remoteapi.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amar.remoteapi.common.ApiResult
+import com.amar.remoteapi.common.network.ApiResult
 import com.amar.remoteapi.data.model.Post
 import com.amar.remoteapi.data.repository.PostRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

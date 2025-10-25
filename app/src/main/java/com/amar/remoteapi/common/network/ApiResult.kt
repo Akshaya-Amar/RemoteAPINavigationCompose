@@ -1,4 +1,4 @@
-package com.amar.remoteapi.common
+package com.amar.remoteapi.common.network
 
 sealed class ApiResult<out T> {
       data class Success<T>(val data: T) : ApiResult<T>()

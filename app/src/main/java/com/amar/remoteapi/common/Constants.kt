@@ -1,5 +1,5 @@
 package com.amar.remoteapi.common
 
-object Constant {
+object Constants {
       const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 }
