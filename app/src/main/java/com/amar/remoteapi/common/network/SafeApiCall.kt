@@ -6,7 +6,7 @@ import io.ktor.client.plugins.ServerResponseException
 
 suspend fun <T> safeApiCall(
       apiCall: suspend () -> T
-): ApiResult<T> = try {
+) = try {
       ApiResult.Success(apiCall())
 } catch (redirectResponseException: RedirectResponseException) {
       ApiResult.Failure("Redirect error -> ${redirectResponseException.response.status.value}, ${redirectResponseException.response.status.description}")

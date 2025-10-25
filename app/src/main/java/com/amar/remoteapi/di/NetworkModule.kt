@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel
@@ -45,6 +46,12 @@ object NetworkModule {
                         }*/
                         logger = Logger.SIMPLE
                         level = if (BuildConfig.DEBUG) LogLevel.BODY else LogLevel.NONE
+                  }
+
+                  install(HttpTimeout) {
+                        requestTimeoutMillis = 15000
+                        connectTimeoutMillis = 15000
+                        socketTimeoutMillis = 15000
                   }
 
                   defaultRequest {

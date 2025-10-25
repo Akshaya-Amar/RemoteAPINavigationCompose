@@ -62,6 +62,8 @@ dependencies {
       implementation(libs.hilt.android)
       implementation(libs.androidx.hilt.navigation.compose)
       implementation(libs.ktor.client.logging)
+      implementation(libs.androidx.navigation3.runtime)
+      implementation(libs.androidx.navigation3.ui)
       ksp(libs.hilt.android.compiler)
       testImplementation(libs.junit)
       androidTestImplementation(libs.androidx.junit)

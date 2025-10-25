@@ -9,11 +9,15 @@ import com.amar.remoteapi.data.model.Post
 @Composable
 fun PostList(
       modifier: Modifier,
-      posts: List<Post>
+      posts: List<Post>,
+      onPostClick: (Post) -> Unit
 ) {
       LazyColumn(modifier = modifier) {
             items(posts) { post ->
-                  PostCard(post)
+                  PostCard(
+                        post = post,
+                        onPostClick = { onPostClick(post) }
+                  )
             }
       }
 }

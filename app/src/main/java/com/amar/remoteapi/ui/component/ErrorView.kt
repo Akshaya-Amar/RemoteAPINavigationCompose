@@ -32,9 +32,7 @@ fun ErrorView(
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            Button(onClick = {
-                  onRetry()
-            }) {
+            Button(onClick = onRetry) {
                   Text(text = "Retry")
             }
       }

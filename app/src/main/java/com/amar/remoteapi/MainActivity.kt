@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.amar.remoteapi.ui.screen.PostScreen
+import com.amar.remoteapi.ui.navigation.AppNavigation
 import com.amar.remoteapi.ui.theme.RemoteAPITheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
             setContent {
                   RemoteAPITheme {
                         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                              PostScreen(Modifier.padding(innerPadding))
+                              AppNavigation(Modifier.padding(innerPadding))
                         }
                   }
             }

@@ -16,7 +16,8 @@ import com.amar.remoteapi.ui.viewmodel.PostViewModel
 @Composable
 fun PostScreen(
       modifier: Modifier = Modifier,
-      viewModel: PostViewModel = hiltViewModel()
+      viewModel: PostViewModel = hiltViewModel(),
+      onPostClicked: (Post) -> Unit
 ) {
       val postResult by viewModel.posts.collectAsStateWithLifecycle()
       when (postResult) {
@@ -28,15 +29,17 @@ fun PostScreen(
             is ApiResult.Failure -> {
                   val message = (postResult as ApiResult.Failure).message
                   Log.d("check...", "PostScreen: $message")
-                  ErrorView(message) {
-                        viewModel.getPosts()
-                  }
+                  ErrorView(message = message, onRetry = { viewModel.getPosts() })
             }
 
             is ApiResult.Success -> {
                   val posts = (postResult as ApiResult.Success<List<Post>>).data
                   Log.d("check...", "PostScreen: $posts")
-                  PostList(modifier, posts)
+                  PostList(
+                        modifier = modifier,
+                        posts = posts,
+                        onPostClick = onPostClicked
+                  )
             }
       }
 }
