@@ -2,7 +2,6 @@ package com.amar.remoteapi.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
@@ -18,21 +17,14 @@ fun AppNavigation(modifier: Modifier = Modifier) {
             modifier = modifier,
             backStack = backStack,
             onBack = { backStack.removeLastOrNull() },
-            entryProvider = { key ->
-                  when (key) {
-                        is Screen.PostList -> NavEntry(key) {
-                              PostScreen(
-                                    onPostClicked = { post ->
-                                          backStack.add(Screen.PostDetail(post))
-                                    }
-                              )
-                        }
+            
+            entryProvider = entryProvider {
+                  entry<Screen.PostList> {
+                        PostScreen(onPostClicked = { backStack.add(Screen.PostDetail(it)) })
+                  }
 
-                        is Screen.PostDetail -> NavEntry(key) {
-                              PostDetailScreen(post = key.post)
-                        }
-
-                        else -> throw RuntimeException("No screen found")
+                  entry<Screen.PostDetail> { key ->
+                        PostDetailScreen(post = key.post)
                   }
             }
       )
